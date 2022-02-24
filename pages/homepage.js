@@ -24,7 +24,9 @@ let homepage = function() {
 
     this.verifyResult = function(result){
         let resultDisplayed = element(by.className('ng-binding')).getText();
-        expect(resultDisplayed).toEqual(result);
+        expect(resultDisplayed).toEqual(result);  //Jasmine assertions
+
+        //Jasmine takes care of Promise resolve.
     };
     
 };

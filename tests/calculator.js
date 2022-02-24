@@ -15,7 +15,9 @@ describe('demo calc tests', function(){
         element(by.css('[ng-click="doAddition()"]')).click();
 
         let resultDisplayed = element(by.className('ng-binding')).getText();
-        expect(resultDisplayed).toEqual('25');
+        expect(resultDisplayed).toEqual('25');  //Jasmine assertions
+
+        //Jasmine takes care of Promise resolve.
 
         browser.sleep(10000);
 
