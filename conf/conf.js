@@ -20,7 +20,7 @@ exports.config = {
 
   // Spec patterns are relative to the current working directory when
   // protractor is called.
-  specs: ['E:/Protractor/tests/pomCalculator.js'],
+  specs: ['E:/Protractor/tests/Dropdown.js'],
 
   /////******* ../tests/example_spec.js--- This relative path can also be added in specs and will work.******//////
 
