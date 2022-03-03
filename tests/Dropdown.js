@@ -2,7 +2,8 @@
 
 describe('Protractor Element Demo', function () {
 
-    //Any Local functions are declared outside the it block to be called in future
+    /*Any Local functions are declared outside the it block 
+    and after Describe block to be called in future*/
     function Calc(a, b, c) {
         element(by.model("first")).sendKeys(a);
         element(by.model("second")).sendKeys(b);
@@ -19,7 +20,7 @@ describe('Protractor Element Demo', function () {
         element(by.id("gobutton")).click();
     }
 
-    it('Locators', function () {
+    it('Drop down Locators', function () {
 
         browser.get('http://juliemr.github.io/protractor-demo/');
         browser.sleep(5000)
