@@ -3,7 +3,8 @@ let homepage = require('../pages/homepage');
 describe('demo calculator test', function(){
 
     it('Addition', function(){
-        homepage.launchWebsite('http://juliemr.github.io/protractor-demo/');
+        
+        homepage.launchWebsite();
 
         homepage.enterFirstNumber(2);
         browser.sleep(1000);

@@ -1,5 +1,3 @@
-//const { doesNotMatch } = require("assert")
-
 describe('Shop test case', function () {
 
     //take all elements into list and traverse through the list by each promise
@@ -15,7 +13,7 @@ describe('Shop test case', function () {
         })
     }
 
-    function checkNoOfItemsOnCheckoutTab(number){
+    function checkNoOfItemsOnCheckoutTab(number) {
         element(by.partialLinkText('Checkout')).getText().then(function (text) {
             console.log(text)
             let x = text.split('(')
@@ -26,32 +24,46 @@ describe('Shop test case', function () {
         })
     }
 
-    function finalCheckout(){
+    function getItemsList() {
         let firstArray = new Array()
         let secondArray = new Array()
-        element.all(by.css('tbody tr')).each(function(item) {
-            
-            item.element(by.css('td:nth-child(4)')).getText().then(function (text) {
-                console.log(text)
-                console.log('*****************')
-                
-                firstArray.push(text)
-                
-                console.log(firstArray) 
-            for(i=0;i<firstArray.length-2;i++){
+        let sum = 0
+        element.all(by.css('tbody tr')).count().then(function (count) {
 
-                let x = firstArray[i].split(' ')
-                console.log(x[1])
-                let y = Number(x[1])
-                console.log(y) 
-                secondArray.push(y)                     
-            }  
-            console.log(secondArray)
-            }) 
-            
+            console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^' + count)
+            // for (j = 1; j <= count - 2; j++) 
 
-    })
-    } 
+            //console.log('^^^^^^^^^INSIDE FOR^^^^^^^^^^^^^^^^^^' + j)
+            element.all(by.css('tbody tr')).each(function (item) {
+                item.element(by.css('td:nth-child(4)')).getText().then(function (text) {
+                    console.log(text)
+
+                    let x = text.split(' ')
+                    let y = Number(x[1])
+                    console.log(y)
+                    firstArray.push(y)
+                    console.log(firstArray)
+
+                    console.log('*****************')
+                    console.log('The array length is ' + firstArray.length)
+                    console.log('^^^^^^^^^^^^^^^^^^')
+
+                    secondArray = firstArray.slice(0, firstArray.length - 2)
+                    console.log('$$$$$$$$$$$$$$$$$')
+                    //secondArray = firstArray.slice(4)
+                    console.log(secondArray)
+                })
+            })
+        })
+    }
+
+    function clickFinalCheckout(){
+
+        let p = new getItemsList()
+        console.log('Inside the click final checkout '+p.secondArray)
+    }
+
+
 
     it('Shop test case', function () {
 
@@ -62,9 +74,11 @@ describe('Shop test case', function () {
 
         addItems('Samsung Note 8')
         addItems('iphone X')
+        addItems('Nokia Edge')
 
-        checkNoOfItemsOnCheckoutTab(2)
+        checkNoOfItemsOnCheckoutTab(3)
 
-        finalCheckout()
-})
+        getItemsList()
+        clickFinalCheckout()
+    })
 })

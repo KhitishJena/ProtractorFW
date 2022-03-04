@@ -5,8 +5,8 @@ let homepage = function() {
 
     let go_button = element(by.css('[ng-click="doAddition()"]'));
 
-    this.launchWebsite = function(url){
-        browser.get(url);
+    this.launchWebsite = function(){
+        browser.get('http://juliemr.github.io/protractor-demo/');
         browser.driver.manage().window().maximize();
     };
 
